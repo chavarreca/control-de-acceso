@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Cuentas</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+        }
+
+        .container {
+            padding: 20px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 5px;
+            border-radius: 3px;
+            background-color: #444;
+            color: #fff;
+            border: none;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Control de Acceso</h1>
+    <h2>Registro</h2>
+    <form action="/registro" method="post" class="container ">
+        <label for="usuario">Usuario: </label>
+        <input type="text" name="usuario" id="usuario">
+        <br>
+        <label for="correo">Correo</label>
+        <input type="text" name="correo" id="correo">
+        <br>
+        <label for="contraseña">Contraseña: </label>
+        <input type="password" name="contraseña" id="contraseña">
+        <br>
+        <br>
+        <button>Registrarse</button>
+    </form>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Evita que el formulario se envíe automáticamente
+
+            var usuario = document.getElementById('usuario').value;
+            var contraseña = document.getElementById('contraseña').value;
+
+            if (usuario.length < 8 || usuario.length > 30) {
+                alert('El usuario debe tener entre 8 y 30 caracteres');
+                return;
+            }
+
+            if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+/.test(contraseña)) {
+                alert('La contraseña debe tener al menos una mayúscula, una minúscula y un número');
+                return;
+            }
+
+            // Si pasa todas las validaciones, puedes enviar el formulario:
+            this.submit();
+        });
+    </script>
+</body>
+</html>

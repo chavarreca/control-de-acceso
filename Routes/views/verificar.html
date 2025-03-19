@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control de Accesos</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        .container {
+            margin: 20px;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="email"] {
+            padding: 5px;
+            border-radius: 3px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #0056b3;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Control de Acceso</h1>
+    <h2>Nueva contraseña</h2>
+    <form action="/verificar" method="post" class="container">
+        <label>Ingrese un usuario valido</label>
+        <label for="contraseña">Usuario: </label>
+        <input type="text" name="usuario" id="usuario">
+        <br>
+        <br>
+        <button id="enviar">Enviar</button>
+    </form>
+    <script>
+        const enviarButton = document.getElementById('enviar');
+        const correoInput = document.getElementById('correo');
+        const verificacionInput = document.getElementById('verificacion');
+
+        enviarButton.addEventListener('click', function(event) {
+            if (correoInput.value.trim() === '') {
+                event.preventDefault();
+                alert('Debes de rellenar el campo');
+            }
+        });
+    </script>
+</body>
+</html>
